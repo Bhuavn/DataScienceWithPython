@@ -1,0 +1,88 @@
+Objective: To demonstrate working of classes and objects
+
+Procedure:
+Creating Classes
+The class statement creates a new class definition. The name of the class immediately follows the keyword class followed by a colon as follows −
+class ClassName:
+'Optional class documentation string'
+class_suite
+• The class has a documentation string, which can be accessed via ClassName.__doc__.
+• The class_suite consists of all the component statements defining class members, data attributes and functions
+Creating Instance Objects
+To create instances of a class, you call the class using class name and pass in whatever arguments its __init__ method accepts.
+"This would create first object of Employee class"
+emp1 = Employee("Zara", 2000)
+"This would create second object of Employee class"
+emp2 = Employee("Manni", 5000)
+
+Accessing Attributes
+You access the object's attributes using the dot operator with object. Class variable would be accessed using class name as follows −
+emp1.displayEmployee()
+emp2.displayEmployee()
+print "Total Employee %d" % Employee.empCount
+Instead of using the normal statements to access attributes, you can use the following functions
+• The getattr(obj, name[, default]) − to access the attribute of object.
+• The hasattr(obj,name) − to check if an attribute exists or not.
+• The setattr(obj,name,value) − to set an attribute. If attribute does not exist, then it would be created.
+• The delattr(obj, name) − to delete an attribute.
+hasattr(emp1, 'age') # Returns true if 'age' attribute exists
+getattr(emp1, 'age') # Returns value of 'age' attribute
+setattr(emp1, 'age', 8) # Set attribute 'age' at 8
+delattr(empl, 'age') # Delete attribute 'age'
+
+Built-In Class Attributes
+Every Python class keeps following built-in attributes and they can be accessed using dot operator like any other attribute −
+• __dict__ − Dictionary containing the class's namespace.
+• __doc__ − Class documentation string or none, if undefined.
+• __name__ − Class name.
+• __module__ − Module name in which the class is defined. This attribute is "__main__" in interactive mode.
+• __bases__ − A possibly empty tuple containing the base classes, in the order of their occurrence in the base class list.
+
+Destroying Objects (Garbage Collection)
+Python deletes unneeded objects (built-in types or class instances) automatically to free the memory space. 
+The process by which Python periodically reclaims blocks of memory that no longer are in use is termed Garbage Collection.
+
+Python's garbage collector runs during program execution and is triggered when an object's reference count reaches zero. An object's reference count changes as the number of aliases that point to it changes.
+An object's reference count increases when it is assigned a new name or placed in a container (list, tuple, or dictionary). The object's reference count decreases when it's deleted with del, its reference is reassigned, or its reference goes out of scope. When an object's reference count reaches zero, Python collects it automatically.
+a = 40 # Create object <40>
+b = a # Increase ref. count of <40>
+c = [b] # Increase ref. count of <40>
+del a # Decrease ref. count of <40>
+b = 100 # Decrease ref. count of <40>
+c[0] = -1 # Decrease ref. count of <40>
+You normally will not notice when the garbage collector destroys an orphaned instance and reclaims its space. But a class can implement the special method __del__ (), called a destructor, that is invoked when the instance is about to be destroyed. This method might be used to clean up any non-memory resources used by an instance.
+
+Objective: To demonstrate class method & static method
+
+
+Procedure:
+Class Method
+The @classmethod decorator, is a builtin function decorator that is an expression that gets evaluated after your function is defined. The result of that evaluation shadows your functiondefinition. A class method receives the class as implicit first argument, just like an instance method receives the instance Syntax:
+class C(object):
+@classmethod
+def fun(cls, arg1, arg2, ...):
+....
+fun: function that needs to be converted into a class method
+returns: a class method for function.
+• A class method is a method which is bound to the class and not the object of the class.
+• They have the access to the state of the class as it takes a class parameter that points to the class and not the object instance.
+• It can modify a class state that would apply across all the instances of the class. For example it can modify a class variable that will be applicable to all the instances.
+Static Method
+A static method does not receive an implicit first argument. Syntax:
+class C(object):
+@staticmethod
+def fun(arg1, arg2, ...):
+...
+returns: a static method for function fun.
+• A static method is also a method which is bound to the class and not the object of the class.
+• A static method can’t access or modify class state.
+• It is present in a class because it makes sense for the method to be present in class.
+<h1>Objective: To demonstrate constructors</h1><br>
+Constructors are generally used for instantiating an object.The task of constructors is to initialize(assign values) to the data members of the class when an object of class is created.In Python the __init__() method is called the constructor and is always called when an object is created.
+Syntax of constructor declaration:
+def __init__(self):
+# Body of the constructor
+Types of constructors:
+• Defaultconstructor: The default constructor is simple constructor which doesn’t accept any arguments.Its definition has only one argument which is a reference to the instance being constructed.
+• Parameterizedconstructor: constructorwith parameters is known as
+parameterized constructor.The parameterized constructor take its first argument as a reference to the instance being constructed known as self and the rest of the arguments are provided by the programmer.
