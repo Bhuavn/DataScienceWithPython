@@ -1,1 +1,2 @@
-Here, Unit-2 content will be posted
+Unit-II: Working with Data in Python
+File Operations, Regular Expressions, Pandas, NumPys, Web Scraping
